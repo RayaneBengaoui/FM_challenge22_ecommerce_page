@@ -1,10 +1,32 @@
 <template>
   <div class="menu-container">
+    <transition name="fade" mode="">
+      <div v-if="isMenuOpen" class="dark-background"></div>
+    </transition>
     <nav>
       <div class="burger-menu-container">
-        <img src="@/assets/icons/icon-menu.svg" alt="burger-menu" />
+        <img
+          v-if="isMenuOpen"
+          src="@/assets/icons/icon-close.svg"
+          alt="close"
+          @click="onToggleMenu(false)"
+        />
+        <img
+          v-else
+          src="@/assets/icons/icon-menu.svg"
+          alt="burger-menu"
+          @click="onToggleMenu(true)"
+        />
       </div>
-      <div class="list-menu-container"></div>
+      <div class="list-menu-container" :class="{ 'menu-open': isMenuOpen }">
+        <ul>
+          <li>Collections</li>
+          <li>Men</li>
+          <li>Women</li>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      </div>
       <div class="logo-container">
         <img src="@/assets/icons/logo.svg" alt="logo sneakers" />
       </div>
@@ -21,7 +43,18 @@
 </template>
 
 <script>
-export default {};
+import { mapState } from "vuex";
+
+export default {
+  computed: {
+    ...mapState(["isMenuOpen"])
+  },
+  methods: {
+    onToggleMenu() {
+      this.$store.commit("toggleMenu", !this.isMenuOpen);
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -29,9 +62,20 @@ export default {};
 
 .menu-container {
   max-height: 68px;
+  position: relative;
 
   @include flex-mixin(row, space-between, center);
   padding: 1.25rem 1.5rem;
+}
+
+.dark-background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba($color: #000000, $alpha: 0.8);
+  z-index: 1;
 }
 
 nav {
@@ -40,6 +84,39 @@ nav {
 
   .burger-menu-container {
     margin-right: 1rem;
+    min-width: 1rem;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .list-menu-container {
+    background: white;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    height: 100vh;
+    width: 70vw;
+    transition: 0.4s ease-in-out;
+    transform: translateX(-101%);
+    padding: 0rem 1.5rem;
+  }
+
+  .menu-open {
+    transform: translateX(0);
+  }
+
+  ul {
+    list-style: none;
+    margin-top: 6rem;
+    z-index: 10;
+  }
+
+  li {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1d2026;
+    padding-bottom: 1.25rem;
     cursor: pointer;
   }
 }
@@ -59,5 +136,15 @@ nav {
 }
 
 @media screen and (min-width: 400px) {
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.8s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
