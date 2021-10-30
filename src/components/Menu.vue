@@ -32,11 +32,9 @@ export default {};
 
   @include flex-mixin(row, space-between, center);
   padding: 1.25rem 1.5rem;
-  /* background: lightblue; */
 }
 
 nav {
-  /* background: lightcoral; */
   @include flex-mixin(row, space-between, center);
   align-items: center;
 

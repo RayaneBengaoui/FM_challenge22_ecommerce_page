@@ -1,10 +1,13 @@
 <template>
   <div class="slider-container">
-    <img
-      id="current-slider-img"
-      :src="sliderImages[currentSliderImageIndex]"
-      alt="slider background"
-    />
+    <transition name="slide-fade" mode="out-in">
+      <img
+        id="current-slider-img"
+        :key="currentSliderImageIndex"
+        :src="sliderImages[currentSliderImageIndex]"
+        alt="slider background"
+      />
+    </transition>
     <div class="arrow-container left-arrow" @click="changeSlideImage('left')">
       <img src="@/assets/icons/icon-previous.svg" alt="left-arrow" />
     </div>
@@ -54,7 +57,16 @@ export default {
   height: 300px;
   width: 100%;
   position: relative;
-  background: brown;
+
+  .slide-fade-enter-active,
+  .slide-fade-leave-active {
+    transition: opacity 0.3s ease;
+  }
+
+  .slide-fade-enter-from,
+  .slide-fade-leave-to {
+    opacity: 0;
+  }
 
   #current-slider-img {
     width: 100%;
