@@ -4,15 +4,15 @@
 </template>
 
 <script>
-import Menu from '@/components/Menu.vue'
-import Content from '@/components/Content.vue'
+import Menu from "@/components/Menu.vue";
+import Content from "@/components/Content.vue";
 
 export default {
   components: {
     Menu,
-    Content,
-  },
-}
+    Content
+  }
+};
 </script>
 
 <style lang="scss">
@@ -24,5 +24,22 @@ export default {
 
 body {
   min-height: 100vh;
+  font-family: "Kumbh Sans", sans-serif;
+}
+
+h3 {
+  font-size: 12px;
+  font-weight: bold;
+  color: #ff7e1b;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #1d2026;
+}
+
+p {
+  color: #69707d;
 }
 </style>

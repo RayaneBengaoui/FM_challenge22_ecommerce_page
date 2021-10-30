@@ -19,37 +19,37 @@ export default {
   data() {
     return {
       sliderImages: [
-        require('@/assets/images/image-product-1.jpg'),
+        require("@/assets/images/image-product-1.jpg"),
 
-        require('@/assets/images/image-product-2.jpg'),
+        require("@/assets/images/image-product-2.jpg"),
 
-        require('@/assets/images/image-product-3.jpg'),
+        require("@/assets/images/image-product-3.jpg"),
 
-        require('@/assets/images/image-product-4.jpg'),
+        require("@/assets/images/image-product-4.jpg")
       ],
-      currentSliderImageIndex: 0,
-    }
+      currentSliderImageIndex: 0
+    };
   },
 
   methods: {
     changeSlideImage(direction) {
-      if (direction === 'right') {
+      if (direction === "right") {
         this.currentSliderImageIndex =
-          (this.currentSliderImageIndex + 1) % this.sliderImages.length
+          (this.currentSliderImageIndex + 1) % this.sliderImages.length;
       } else {
         if (this.currentSliderImageIndex === 0) {
-          this.currentSliderImageIndex = this.sliderImages.length - 1
+          this.currentSliderImageIndex = this.sliderImages.length - 1;
         } else {
-          this.currentSliderImageIndex -= 1
+          this.currentSliderImageIndex -= 1;
         }
       }
-    },
-  },
-}
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles.scss';
+@import "@/styles.scss";
 .slider-container {
   height: 300px;
   width: 100%;

@@ -11,7 +11,7 @@
     </nav>
     <div class="user-container">
       <div class="cart-container">
-        <img src="@/assets/icons/icon-cart.svg" alt="cart" />
+        <img src="@/assets/icons/icon-cart-dark.svg" alt="cart" />
       </div>
       <div class="avatar-container">
         <img src="@/assets/images/image-avatar.png" alt="profile avatar" />
@@ -21,11 +21,11 @@
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles.scss';
+@import "@/styles.scss";
 
 .menu-container {
   max-height: 68px;
@@ -42,11 +42,16 @@ nav {
 
   .burger-menu-container {
     margin-right: 1rem;
+    cursor: pointer;
   }
 }
 
 .user-container {
   @include flex-mixin(row, space-between, center);
+
+  img {
+    cursor: pointer;
+  }
   .avatar-container {
     margin-left: 1.5rem;
     img {
