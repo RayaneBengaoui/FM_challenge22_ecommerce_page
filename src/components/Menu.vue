@@ -1,5 +1,8 @@
 <template>
   <div class="menu-container">
+    <transition name="component-fade" mode="out-in">
+      <Cart v-if="isCartOpen"></Cart>
+    </transition>
     <transition name="fade" mode="">
       <div v-if="isMenuOpen" class="dark-background"></div>
     </transition>
@@ -9,13 +12,13 @@
           v-if="isMenuOpen"
           src="@/assets/icons/icon-close.svg"
           alt="close"
-          @click="onToggleMenu(false)"
+          @click="onToggleMenu()"
         />
         <img
           v-else
           src="@/assets/icons/icon-menu.svg"
           alt="burger-menu"
-          @click="onToggleMenu(true)"
+          @click="onToggleMenu()"
         />
       </div>
       <div class="list-menu-container" :class="{ 'menu-open': isMenuOpen }">
@@ -32,7 +35,7 @@
       </div>
     </nav>
     <div class="user-container">
-      <div class="cart-container">
+      <div class="cart-container" @click="onToggleCart()">
         <img src="@/assets/icons/icon-cart-dark.svg" alt="cart" />
       </div>
       <div class="avatar-container">
@@ -44,14 +47,22 @@
 
 <script>
 import { mapState } from "vuex";
+import Cart from "@/components/Cart.vue";
 
 export default {
+  components: {
+    Cart
+  },
+
   computed: {
-    ...mapState(["isMenuOpen"])
+    ...mapState(["isMenuOpen", "isCartOpen"])
   },
   methods: {
     onToggleMenu() {
       this.$store.commit("toggleMenu", !this.isMenuOpen);
+    },
+    onToggleCart() {
+      this.$store.commit("toggleCart", !this.isCartOpen);
     }
   }
 };
@@ -145,6 +156,15 @@ nav {
 
 .fade-enter-from,
 .fade-leave-to {
+  opacity: 0;
+}
+
+.component-fade-enter-active,
+.component-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.component-fade-enter-from,
+.component-fade-leave-to {
   opacity: 0;
 }
 </style>

@@ -3,7 +3,8 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     itemQuantity: 0,
-    isMenuOpen: false
+    isMenuOpen: false,
+    isCartOpen: false
   },
   mutations: {
     updateItemQuantity(state, newQuantity) {
@@ -11,6 +12,9 @@ export default createStore({
     },
     toggleMenu(state, openMenu) {
       state.isMenuOpen = openMenu;
+    },
+    toggleCart(state, openCart) {
+      state.isCartOpen = openCart;
     }
   },
   actions: {},
