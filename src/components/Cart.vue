@@ -20,7 +20,7 @@
             <span class="calculated-price">{{ totalPrice }}</span>
           </p>
         </div>
-        <div class="delete-container">
+        <div class="delete-container" @click="onDeleteItem()">
           <img src="@/assets/icons/icon-delete.svg" alt="trash" />
         </div>
       </div>
@@ -43,6 +43,11 @@ export default {
 
     totalPrice: function() {
       return 125 * this.itemQuantity + ".00";
+    }
+  },
+  methods: {
+    onDeleteItem() {
+      this.$store.commit("updateItemQuantity", 0);
     }
   }
 };
@@ -102,6 +107,10 @@ export default {
       font-size: 16px;
       color: #1d2026;
       font-weight: bold;
+    }
+
+    .delete-container {
+      cursor: pointer;
     }
   }
 

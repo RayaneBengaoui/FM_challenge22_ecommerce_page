@@ -20,13 +20,13 @@
     </div>
     <div class="cart-modifier-container">
       <div class="item-quantity-container">
-        <div class="minus-container">
+        <div class="minus-container" @click="onRemoveItem()">
           <img src="@/assets/icons/icon-minus.svg" alt="minus" />
         </div>
         <div class="quantity">
           <p>{{ itemQuantity }}</p>
         </div>
-        <div class="plus-container">
+        <div class="plus-container" @click="onAddItem()">
           <img src="@/assets/icons/icon-plus.svg" alt="plus" />
         </div>
       </div>
@@ -44,6 +44,14 @@ import { mapState } from "vuex";
 export default {
   computed: {
     ...mapState(["itemQuantity"])
+  },
+  methods: {
+    onAddItem() {
+      this.$store.commit("updateItemQuantity", this.itemQuantity + 1);
+    },
+    onRemoveItem() {
+      this.$store.commit("updateItemQuantity", this.itemQuantity + -1);
+    }
   }
 };
 </script>
