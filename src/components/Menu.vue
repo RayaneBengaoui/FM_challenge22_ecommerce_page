@@ -4,7 +4,11 @@
       <Cart v-if="isCartOpen"></Cart>
     </transition>
     <transition name="fade" mode="">
-      <div v-if="isMenuOpen" class="dark-background"></div>
+      <div
+        v-if="isMenuOpen"
+        class="dark-background"
+        @click="onToggleMenu()"
+      ></div>
     </transition>
     <nav>
       <div class="burger-menu-container">

@@ -12,6 +12,9 @@ export default createStore({
     },
     toggleMenu(state, openMenu) {
       state.isMenuOpen = openMenu;
+      if (openMenu && state.isCartOpen) {
+        state.isCartOpen = false;
+      }
     },
     toggleCart(state, openCart) {
       state.isCartOpen = openCart;
