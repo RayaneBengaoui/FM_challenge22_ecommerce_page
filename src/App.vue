@@ -9,6 +9,20 @@ export default {
   name: "App",
   components: {
     Home
+  },
+  mounted() {
+    window.addEventListener("resize", this.getDimensions);
+  },
+  unmounted() {
+    window.removeEventListener("resize", this.getDimensions);
+  },
+  methods: {
+    getDimensions() {
+      this.$store.commit(
+        "setWindowWidth",
+        document.documentElement.clientWidth
+      );
+    }
   }
 };
 </script>

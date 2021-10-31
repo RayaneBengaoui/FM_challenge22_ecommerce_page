@@ -4,7 +4,8 @@ export default createStore({
   state: {
     itemQuantity: 0,
     isMenuOpen: false,
-    isCartOpen: false
+    isCartOpen: false,
+    windowWidth: 0
   },
   mutations: {
     updateItemQuantity(state, newQuantity) {
@@ -18,6 +19,9 @@ export default createStore({
     },
     toggleCart(state, openCart) {
       state.isCartOpen = openCart;
+    },
+    setWindowWidth(state, width) {
+      state.windowWidth = width;
     }
   },
   actions: {},
