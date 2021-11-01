@@ -11,6 +11,7 @@ export default {
     Home
   },
   mounted() {
+    this.$store.commit("setWindowWidth", document.documentElement.clientWidth);
     window.addEventListener("resize", this.getDimensions);
   },
   unmounted() {

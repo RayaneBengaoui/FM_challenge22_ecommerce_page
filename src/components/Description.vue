@@ -1,5 +1,8 @@
 <template>
-  <div class="description-container">
+  <div
+    class="description-container"
+    :class="{ 'description-hide': isSliderOpen }"
+  >
     <div class="text-container">
       <h3 class="company-title">SNEAKER COMPANY</h3>
       <h1 class="item-title">Fall Limited Edition Sneakers</h1>
@@ -43,7 +46,7 @@ import { mapState } from "vuex";
 
 export default {
   computed: {
-    ...mapState(["itemQuantity"])
+    ...mapState(["itemQuantity", "isSliderOpen"])
   },
   methods: {
     onAddItem() {
@@ -58,6 +61,11 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles.scss";
+
+.description-hide {
+  visibility: hidden;
+}
+
 .description-container {
   padding: 1.5rem;
 

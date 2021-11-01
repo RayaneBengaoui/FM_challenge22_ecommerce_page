@@ -1,5 +1,16 @@
 <template>
-  <div class="slider">
+  <div
+    class="slider"
+    :class="{ 'slider-open': isSliderOpen }"
+    @click="onToggleSlider($event)"
+  >
+    <div
+      v-if="isSliderOpen"
+      class="close-container"
+      @click="onToggleSlider($event)"
+    >
+      <img src="@/assets/icons/icon-close-slider.svg" alt="cross close" />
+    </div>
     <div class="slider-container">
       <transition name="slide-fade" mode="out-in">
         <img
@@ -7,19 +18,22 @@
           :key="currentSliderImageIndex"
           :src="sliderImages[currentSliderImageIndex]"
           alt="slider background"
+          @click="onToggleSlider($event)"
         />
       </transition>
       <div
-        v-if="isMobile"
+        v-if="isMobile || isSliderOpen"
         class="arrow-container left-arrow"
-        @click="changeSlideImage('left')"
+        :class="{ 'left-slider-open': isSliderOpen }"
+        @click="changeSlideImage('left', $event)"
       >
         <img src="@/assets/icons/icon-previous.svg" alt="left-arrow" />
       </div>
       <div
-        v-if="isMobile"
+        v-if="isMobile || isSliderOpen"
         class="arrow-container right-arrow"
-        @click="changeSlideImage('right')"
+        :class="{ 'right-slider-open': isSliderOpen }"
+        @click="changeSlideImage('right', $event)"
       >
         <img src="@/assets/icons/icon-next.svg" alt="left-arrow" />
       </div>
@@ -60,14 +74,15 @@ export default {
     };
   },
   computed: {
-    ...mapState(["isMenuOpen", "isCartOpen", "windowWidth"]),
+    ...mapState(["isMenuOpen", "isCartOpen", "isSliderOpen", "windowWidth"]),
     isMobile() {
       return this.windowWidth < 700;
     }
   },
 
   methods: {
-    changeSlideImage(direction) {
+    changeSlideImage(direction, event) {
+      event.stopPropagation();
       if (direction === "right") {
         this.currentSliderImageIndex =
           (this.currentSliderImageIndex + 1) % this.sliderImages.length;
@@ -78,6 +93,11 @@ export default {
           this.currentSliderImageIndex -= 1;
         }
       }
+    },
+    onToggleSlider(event) {
+      // console.log("event", event);
+      event.stopPropagation();
+      this.$store.commit("toggleSlider", !this.isSliderOpen);
     }
   }
 };
@@ -131,18 +151,52 @@ export default {
   transform: translate(50%, -50%);
 }
 
+.left-slider-open {
+  left: 20%;
+}
+
+.right-slider-open {
+  right: 20%;
+}
+
 @media screen and (min-width: 700px) {
+  .slider-open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background: rgba($color: #000000, $alpha: 0.6);
+    @include flex-mixin(column, center, center);
+
+    .slider-container {
+      width: 550px;
+      height: 550px;
+    }
+  }
+
+  .close-container {
+    width: 550px;
+    @include flex-mixin(row, flex-end, center);
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+  }
+
   .slider {
     flex-basis: 50%;
+
     /* background: lightcoral; */
   }
   .slider-container {
+    transition: all 0.3s ease;
     width: 445px;
     height: 445px;
 
     position: unset;
     border-radius: 10px;
     overflow: hidden;
+    cursor: pointer;
     /* background: lightcoral; */
 
     .slide-fade-enter-active,
@@ -170,6 +224,7 @@ export default {
       height: 88px;
       border-radius: 10px;
       overflow: hidden;
+      cursor: pointer;
 
       img {
         width: 100%;

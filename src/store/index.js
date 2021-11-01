@@ -5,6 +5,7 @@ export default createStore({
     itemQuantity: 0,
     isMenuOpen: false,
     isCartOpen: false,
+    isSliderOpen: false,
     windowWidth: 0
   },
   mutations: {
@@ -19,6 +20,12 @@ export default createStore({
     },
     toggleCart(state, openCart) {
       state.isCartOpen = openCart;
+    },
+    toggleSlider(state, openSlider) {
+      console.log("click");
+      if (state.windowWidth > 700) {
+        state.isSliderOpen = openSlider;
+      }
     },
     setWindowWidth(state, width) {
       state.windowWidth = width;

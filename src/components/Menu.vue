@@ -183,6 +183,7 @@ nav {
     /* max-width: 1440px; */
     @include flex-mixin(row, space-between, center);
     padding: 1.25rem 4rem;
+    border-bottom: solid 1px #e4e9f2;
   }
 
   nav {
