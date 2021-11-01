@@ -79,22 +79,20 @@ export default {
 
   .price-container {
     @include flex-mixin(row, space-between, center);
-
+    padding-bottom: 0.5rem;
     .discount-price-container {
       @include flex-mixin(row, space-between, center);
-      h1 {
-        padding-right: 1rem;
-      }
 
       h3 {
         font-size: 16px;
+        font-weight: bold;
+        padding-left: 1.5rem;
       }
     }
 
     .price-pre-discount-container {
       p {
         font-weight: bold;
-        text-decoration-line: line-through;
       }
     }
   }
@@ -136,6 +134,65 @@ export default {
         color: white;
         font-weight: bold;
         padding-left: 1rem;
+      }
+    }
+  }
+}
+@media screen and (min-width: 700px) {
+  .description-container {
+    flex-basis: 50%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .description-container {
+    padding: unset;
+    padding-left: 5rem;
+
+    .company-title {
+      padding-top: 4rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .item-title {
+      padding-bottom: 2rem;
+    }
+
+    .item-description {
+      font-size: 16px;
+    }
+
+    .price-container {
+      @include flex-mixin(column, space-between, flex-start);
+
+      .discount-price-container {
+        @include flex-mixin(row, space-between, center);
+        h1 {
+          font-size: 28px;
+          padding-right: 1rem;
+        }
+
+        h3 {
+          font-size: 16px;
+        }
+      }
+
+      .price-pre-discount-container {
+        p {
+          font-weight: bold;
+          text-decoration-line: line-through;
+        }
+      }
+    }
+
+    .cart-modifier-container {
+      @include flex-mixin(row, space-between, center);
+      .item-quantity-container {
+        flex-basis: 36.5%;
+      }
+
+      button {
+        flex-basis: 63.5%;
       }
     }
   }

@@ -263,9 +263,10 @@ nav {
 @media screen and (min-width: 1400px) {
   .menu-container {
     min-height: 7rem;
-    /* max-width: 1440px; */
+    /* max-width: 1440px;
+    margin: auto; */
     @include flex-mixin(row, space-between, center);
-    padding: 1.25rem 13.5rem;
+    padding: 1.25rem 10.5rem;
   }
   nav {
     ul {

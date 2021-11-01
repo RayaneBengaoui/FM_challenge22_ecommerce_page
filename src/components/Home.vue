@@ -42,4 +42,18 @@ h1 {
 p {
   color: #69707d;
 }
+
+@media screen and (min-width: 1400px) {
+  h3 {
+    font-size: 13px;
+  }
+
+  h1 {
+    font-size: 44px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
 </style>
