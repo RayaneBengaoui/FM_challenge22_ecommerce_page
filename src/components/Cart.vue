@@ -112,6 +112,14 @@ export default {
 
     .delete-container {
       cursor: pointer;
+
+      &:hover {
+        img {
+          transition: all 0.3s ease-in-out;
+          filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg)
+            saturate(600%) contrast(0.8);
+        }
+      }
     }
   }
 
@@ -128,6 +136,12 @@ export default {
     font-size: 16px;
 
     font-weight: bold;
+
+    transition: ease-in-out all 0.3s;
+
+    &:hover {
+      background: #ffab6a;
+    }
   }
 }
 

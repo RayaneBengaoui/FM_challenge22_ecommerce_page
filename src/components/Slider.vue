@@ -171,10 +171,25 @@ export default {
 .left-arrow {
   left: 10%;
   transform: translate(-50%, -50%);
+
+  &:hover {
+    img {
+      transition: all 0.3s ease-in-out;
+      filter: invert(57%) sepia(20%) saturate(4422%) hue-rotate(347deg)
+        brightness(102%) contrast(101%);
+    }
+  }
 }
 .right-arrow {
   right: 10%;
   transform: translate(50%, -50%);
+  &:hover {
+    img {
+      transition: all 0.3s ease-in-out;
+      filter: invert(57%) sepia(20%) saturate(4422%) hue-rotate(347deg)
+        brightness(102%) contrast(101%);
+    }
+  }
 }
 
 .left-slider-open {
@@ -215,6 +230,11 @@ export default {
     @include flex-mixin(row, flex-end, center);
     margin-bottom: 1.5rem;
     cursor: pointer;
+
+    &:hover {
+      filter: brightness(0) saturate(100%) invert(57%) sepia(20%)
+        saturate(4422%) hue-rotate(347deg) brightness(102%) contrast(101%);
+    }
   }
 
   .slider {
@@ -259,11 +279,21 @@ export default {
       border-radius: 10px;
       overflow: hidden;
       cursor: pointer;
+      transition: all 0.3s ease-in-out;
 
       img {
+        transition: all 0.3s ease-in-out;
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+
+      &:hover {
+        background-color: rgba($color: #fff, $alpha: 0.35);
+        img {
+          width: 107%;
+          mix-blend-mode: lighten;
+        }
       }
     }
     @include flex-mixin(row, space-between, center);

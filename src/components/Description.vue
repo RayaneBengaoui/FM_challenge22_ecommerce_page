@@ -95,14 +95,18 @@ export default {
       @include flex-mixin(row, space-between, center);
 
       h3 {
+        background-color: #ffeee2;
+        padding: 0.2rem 0.5rem;
+        border-radius: 6px;
         font-size: 16px;
         font-weight: bold;
-        padding-left: 1.5rem;
+        margin-left: 1.5rem;
       }
     }
 
     .price-pre-discount-container {
       p {
+        color: #b6bcc8;
         font-weight: bold;
       }
     }
@@ -122,9 +126,21 @@ export default {
       .minus-container {
         padding-bottom: 0.8rem;
         cursor: pointer;
+        &:hover {
+          img {
+            filter: brightness(0) saturate(100%) invert(92%) sepia(8%)
+              saturate(7311%) hue-rotate(311deg) brightness(101%) contrast(102%);
+          }
+        }
       }
       .plus-container {
         cursor: pointer;
+        &:hover {
+          img {
+            filter: brightness(0) saturate(100%) invert(92%) sepia(8%)
+              saturate(7311%) hue-rotate(311deg) brightness(101%) contrast(102%);
+          }
+        }
       }
     }
 
@@ -139,12 +155,17 @@ export default {
       color: white;
       width: 100%;
       border-radius: 10px;
+      transition: ease-in-out all 0.3s;
 
       p {
         font-size: 16px;
         color: white;
         font-weight: bold;
         padding-left: 1rem;
+      }
+
+      &:hover {
+        background: #ffab6a;
       }
     }
   }
@@ -185,6 +206,7 @@ export default {
 
         h3 {
           font-size: 16px;
+          margin-left: 0.5rem;
         }
       }
 

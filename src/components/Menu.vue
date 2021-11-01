@@ -144,6 +144,11 @@ nav {
     color: #1d2026;
     padding-bottom: 1.25rem;
     cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #ff7e1b;
+    }
   }
 }
 
@@ -152,6 +157,7 @@ nav {
 }
 
 .cart-item-number-container {
+  pointer-events: none;
   position: absolute;
   width: 19px;
   height: 13px;
@@ -175,9 +181,18 @@ nav {
     cursor: pointer;
   }
   .avatar-container {
+    transition: all 0.3s ease-in-out;
     margin-left: 1.5rem;
+    border-radius: 50%;
+    width: 33px;
+    height: 33px;
+    border: solid 2px transparent;
+    overflow: hidden;
     img {
-      max-width: 24px;
+      max-width: 33px;
+    }
+    &:hover {
+      border: solid 2px #ff7e1b;
     }
   }
 }
@@ -245,6 +260,30 @@ nav {
       font-weight: normal;
       color: #69707d;
       padding-bottom: unset;
+      position: relative;
+      /* 
+      &:hover{
+        border-bottom:solid 3px #FF7E1B 
+      } */
+    }
+
+    li:after {
+      background: none repeat scroll 0 0 transparent;
+      bottom: -48px;
+
+      content: "";
+      display: block;
+      height: 5px;
+      left: 50%;
+      position: absolute;
+      background: #ff7e1b;
+      transition: width 0.3s ease 0s, left 0.3s ease 0s;
+      width: 0;
+    }
+
+    li:hover:after {
+      width: 100%;
+      left: 0;
     }
   }
 
@@ -256,6 +295,9 @@ nav {
     }
     .avatar-container {
       margin-left: 3rem;
+
+      width: 50px;
+      height: 50px;
       img {
         max-width: 50px;
       }
