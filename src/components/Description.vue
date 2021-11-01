@@ -116,7 +116,10 @@ export default {
     padding-top: 1.5rem;
     .item-quantity-container {
       @include flex-mixin(row, space-between, center);
-      padding: 0rem 1.5rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: 10px;
+      background: #f6f8fd;
+
       p {
         color: #1d2026;
         font-size: 16px;
@@ -222,10 +225,12 @@ export default {
       @include flex-mixin(row, space-between, center);
       .item-quantity-container {
         flex-basis: 36.5%;
+        margin-right: 1rem;
       }
 
       button {
         flex-basis: 63.5%;
+        margin-top: unset;
       }
     }
   }
