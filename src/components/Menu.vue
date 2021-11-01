@@ -82,6 +82,7 @@ export default {
   max-height: 68px;
   position: relative;
   transition: all 0.4s ease-in-out;
+  border-bottom: solid 0px #e4e9f2;
 
   @include flex-mixin(row, space-between, center);
   padding: 1.25rem 1.5rem;
@@ -238,12 +239,13 @@ nav {
   }
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 1440px) {
   .menu-container {
     min-height: 7rem;
     /* max-width: 1440px; */
     @include flex-mixin(row, space-between, center);
     padding: 1.25rem 3rem;
+    border-bottom: solid 1px #e4e9f2;
   }
   nav {
     ul {

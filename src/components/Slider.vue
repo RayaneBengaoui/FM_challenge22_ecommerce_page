@@ -39,16 +39,32 @@
       </div>
     </div>
     <div v-if="!isMobile" class="thumbnail-container">
-      <div class="thumbnail-item">
+      <div
+        class="thumbnail-item"
+        :class="{ 'selected-thumbnail': isThumbnailSelected(0) }"
+        @click="selectSpecificSliderImage(0, $event)"
+      >
         <img src="@/assets/images/image-product-1-thumbnail.jpg" alt="shoes" />
       </div>
-      <div class="thumbnail-item">
+      <div
+        class="thumbnail-item"
+        :class="{ 'selected-thumbnail': isThumbnailSelected(1) }"
+        @click="selectSpecificSliderImage(1, $event)"
+      >
         <img src="@/assets/images/image-product-2-thumbnail.jpg" alt="shoes" />
       </div>
-      <div class="thumbnail-item">
+      <div
+        class="thumbnail-item"
+        :class="{ 'selected-thumbnail': isThumbnailSelected(2) }"
+        @click="selectSpecificSliderImage(2, $event)"
+      >
         <img src="@/assets/images/image-product-3-thumbnail.jpg" alt="shoes" />
       </div>
-      <div class="thumbnail-item">
+      <div
+        class="thumbnail-item"
+        :class="{ 'selected-thumbnail': isThumbnailSelected(3) }"
+        @click="selectSpecificSliderImage(3, $event)"
+      >
         <img src="@/assets/images/image-product-4-thumbnail.jpg" alt="shoes" />
       </div>
     </div>
@@ -98,6 +114,16 @@ export default {
       // console.log("event", event);
       event.stopPropagation();
       this.$store.commit("toggleSlider", !this.isSliderOpen);
+    },
+    selectSpecificSliderImage(index, event) {
+      event.stopPropagation();
+      this.currentSliderImageIndex = index;
+    },
+    isThumbnailSelected(thumbnailIndex) {
+      if (thumbnailIndex === this.currentSliderImageIndex) {
+        return true;
+      }
+      return false;
     }
   }
 };
@@ -157,6 +183,14 @@ export default {
 
 .right-slider-open {
   right: 20%;
+}
+
+.selected-thumbnail {
+  border: solid 2px #ff7e1b;
+  background-color: rgba($color: #fff, $alpha: 0.75);
+  img {
+    mix-blend-mode: lighten;
+  }
 }
 
 @media screen and (min-width: 700px) {
