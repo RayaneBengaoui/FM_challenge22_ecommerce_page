@@ -92,7 +92,7 @@ export default {
   computed: {
     ...mapState(["isMenuOpen", "isCartOpen", "isSliderOpen", "windowWidth"]),
     isMobile() {
-      return this.windowWidth < 700;
+      return this.windowWidth < 900;
     }
   },
 
@@ -193,7 +193,7 @@ export default {
   }
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 900px) {
   .slider-open {
     position: fixed;
     top: 0;
@@ -204,10 +204,10 @@ export default {
     background: rgba($color: #000000, $alpha: 0.6);
     @include flex-mixin(column, center, center);
 
-    .slider-container {
-      width: 550px;
-      height: 550px;
-    }
+    /* .slider-container {
+      width: 350px;
+      height: 350px;
+    } */
   }
 
   .close-container {
@@ -224,8 +224,8 @@ export default {
   }
   .slider-container {
     transition: all 0.3s ease;
-    width: 445px;
-    height: 445px;
+    width: 350px;
+    height: 350px;
 
     position: unset;
     border-radius: 10px;
@@ -251,11 +251,11 @@ export default {
   }
 
   .thumbnail-container {
-    width: 445px;
+    width: 350px;
     margin-top: 2rem;
     .thumbnail-item {
-      width: 88px;
-      height: 88px;
+      width: 70px;
+      height: 70px;
       border-radius: 10px;
       overflow: hidden;
       cursor: pointer;
@@ -267,6 +267,33 @@ export default {
       }
     }
     @include flex-mixin(row, space-between, center);
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .slider-open {
+    .slider-container {
+      width: 550px;
+      height: 550px;
+    }
+  }
+
+  .close-container {
+    width: 550px;
+  }
+
+  .slider-container {
+    width: 445px;
+    height: 445px;
+  }
+
+  .thumbnail-container {
+    width: 445px;
+
+    .thumbnail-item {
+      width: 88px;
+      height: 88px;
+    }
   }
 }
 </style>

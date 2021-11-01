@@ -64,7 +64,7 @@ export default {
   computed: {
     ...mapState(["isMenuOpen", "isCartOpen", "windowWidth", "itemCart"]),
     isMobile() {
-      return this.windowWidth < 700;
+      return this.windowWidth < 900;
     }
   },
   methods: {
@@ -202,7 +202,7 @@ nav {
   opacity: 0;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 900px) {
   .menu-container {
     min-height: 7rem;
     /* max-width: 1440px; */
@@ -290,8 +290,8 @@ nav {
 @media screen and (min-width: 1400px) {
   .menu-container {
     min-height: 7rem;
-    /* max-width: 1440px;
-    margin: auto; */
+    max-width: 1440px;
+    margin: auto;
     @include flex-mixin(row, space-between, center);
     padding: 1.25rem 10.5rem;
   }

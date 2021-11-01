@@ -27,8 +27,7 @@ export default createStore({
       state.isCartOpen = openCart;
     },
     toggleSlider(state, openSlider) {
-      console.log("click");
-      if (state.windowWidth > 700) {
+      if (state.windowWidth > 900) {
         state.isSliderOpen = openSlider;
       }
     },

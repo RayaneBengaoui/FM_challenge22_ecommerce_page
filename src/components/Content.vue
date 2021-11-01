@@ -21,7 +21,7 @@ export default {
 .content-container {
   transition: all 0.4s ease;
 }
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 900px) {
   .content-container {
     display: flex;
     padding: 3rem 4rem;

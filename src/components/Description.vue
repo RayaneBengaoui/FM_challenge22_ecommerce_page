@@ -149,7 +149,7 @@ export default {
     }
   }
 }
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 900px) {
   .description-container {
     flex-basis: 50%;
   }
