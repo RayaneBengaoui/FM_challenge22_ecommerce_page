@@ -11,7 +11,11 @@ export default createStore({
   },
   mutations: {
     updateItemQuantity(state, newQuantity) {
-      state.itemQuantity = newQuantity;
+      if (newQuantity < 0) {
+        state.itemQuantity = 0;
+      } else {
+        state.itemQuantity = newQuantity;
+      }
     },
     updateItemCart(state, newValue) {
       state.itemCart = newValue;
