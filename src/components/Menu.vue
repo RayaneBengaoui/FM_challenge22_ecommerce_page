@@ -1,8 +1,5 @@
 <template>
   <div class="menu-container">
-    <transition name="component-fade" mode="out-in">
-      <Cart v-if="isCartOpen"></Cart>
-    </transition>
     <transition name="fade" mode="">
       <div
         v-if="isMenuOpen && isMobile"
@@ -41,7 +38,13 @@
     <div class="user-container">
       <div class="cart-container" @click="onToggleCart()">
         <img src="@/assets/icons/icon-cart-dark.svg" alt="cart" />
+        <div class="cart-item-number-container">
+          <p>{{ itemCart }}</p>
+        </div>
       </div>
+      <transition name="component-fade" mode="out-in">
+        <Cart v-if="isCartOpen"></Cart>
+      </transition>
       <div class="avatar-container">
         <img src="@/assets/images/image-avatar.png" alt="profile avatar" />
       </div>
@@ -59,7 +62,7 @@ export default {
   },
 
   computed: {
-    ...mapState(["isMenuOpen", "isCartOpen", "windowWidth"]),
+    ...mapState(["isMenuOpen", "isCartOpen", "windowWidth", "itemCart"]),
     isMobile() {
       return this.windowWidth < 700;
     }
@@ -141,6 +144,27 @@ nav {
     color: #1d2026;
     padding-bottom: 1.25rem;
     cursor: pointer;
+  }
+}
+
+.cart-container {
+  position: relative;
+}
+
+.cart-item-number-container {
+  position: absolute;
+  width: 19px;
+  height: 13px;
+  background-color: #ff7e1b;
+  top: -25%;
+  right: -25%;
+  border-radius: 6.5px;
+  @include flex-mixin(row, center, center);
+
+  p {
+    font-size: 10px;
+    color: white;
+    font-weight: bold;
   }
 }
 

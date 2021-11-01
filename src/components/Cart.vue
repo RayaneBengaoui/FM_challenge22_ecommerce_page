@@ -1,11 +1,11 @@
 <template>
-  <div class="cart-container">
+  <div class="cart-component-container">
     <div class="cart-title-container">
       <h1>
         Cart
       </h1>
     </div>
-    <div v-if="itemQuantity > 0" class="article-information-container">
+    <div v-if="itemCart > 0" class="article-information-container">
       <div class="information-container">
         <div class="preview-container">
           <img
@@ -16,11 +16,11 @@
         <div class="text-container">
           <p class="article-title">Fall Limited Edition Sneakers</p>
           <p class="article-price">
-            {{ "$125.00 x " + itemQuantity }}
+            {{ "$125.00 x " + itemCart }}
             <span class="calculated-price">{{ totalPrice }}</span>
           </p>
         </div>
-        <div class="delete-container" @click="onDeleteItem()">
+        <div class="delete-container" @click="onDeleteItem($event)">
           <img src="@/assets/icons/icon-delete.svg" alt="trash" />
         </div>
       </div>
@@ -39,15 +39,16 @@ import { mapState } from "vuex";
 
 export default {
   computed: {
-    ...mapState(["itemQuantity"]),
+    ...mapState(["itemCart"]),
 
     totalPrice: function() {
-      return 125 * this.itemQuantity + ".00";
+      return 125 * this.itemCart + ".00";
     }
   },
   methods: {
-    onDeleteItem() {
-      this.$store.commit("updateItemQuantity", 0);
+    onDeleteItem(event) {
+      event.stopPropagation();
+      this.$store.commit("updateItemCart", 0);
     }
   }
 };
@@ -55,7 +56,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles.scss";
-.cart-container {
+.cart-component-container {
   position: absolute;
   min-height: 256px;
   overflow: hidden;
@@ -138,6 +139,16 @@ export default {
   p {
     font-size: 16px;
     font-weight: bold;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .cart-component-container {
+    top: 80%;
+    left: unset;
+    right: unset;
+    width: 360px;
+    transform: translateX(-50%);
   }
 }
 </style>

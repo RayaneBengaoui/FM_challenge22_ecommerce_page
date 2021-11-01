@@ -33,7 +33,7 @@
           <img src="@/assets/icons/icon-plus.svg" alt="plus" />
         </div>
       </div>
-      <button>
+      <button @click="onAddToCart()">
         <img src="@/assets/icons/icon-cart.svg" alt="cart" />
         <p>Add to cart</p>
       </button>
@@ -54,6 +54,9 @@ export default {
     },
     onRemoveItem() {
       this.$store.commit("updateItemQuantity", this.itemQuantity + -1);
+    },
+    onAddToCart() {
+      this.$store.commit("updateItemCart", this.itemQuantity);
     }
   }
 };
